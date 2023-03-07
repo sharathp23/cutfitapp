@@ -4,7 +4,6 @@ import 'package:flutter_auth/Screens/ExpertTips/expert_tips.dart';
 import 'package:flutter_auth/Screens/Homepage/bloodpressure.dart';
 import 'package:flutter_auth/Screens/Homepage/bmicalculator.dart';
 import 'package:flutter_auth/Screens/Homepage/caloriescount.dart';
-import 'package:flutter_auth/Screens/Homepage/pedometer.dart';
 import 'package:flutter_auth/Screens/Homepage/notification.dart';
 import 'package:flutter_auth/Screens/Meals/meals_screen.dart';
 import 'package:flutter_auth/Screens/Meditation/meditation_screen.dart';
@@ -170,21 +169,6 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       Icon(Icons.favorite),
                       Text('Blood Pressure'),
-                    ],
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => PedometerScreen()),
-                    );
-                  },
-                  child: Column(
-                    children: [
-                      Icon(Icons.directions_walk),
-                      Text('Pedometer'),
                     ],
                   ),
                 ),
