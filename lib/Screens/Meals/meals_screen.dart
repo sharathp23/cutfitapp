@@ -1,86 +1,76 @@
 import 'package:flutter/material.dart';
 
-class Meal {
-  final String title;
-  final String description;
-  final String image;
-
-  Meal({required this.title, required this.description, required this.image});
+class MealsScreen extends StatefulWidget {
+  @override
+  _MealsScreenState createState() => _MealsScreenState();
 }
 
-class MealsScreen extends StatelessWidget {
+class _MealsScreenState extends State<MealsScreen> with SingleTickerProviderStateMixin {
+  late TabController _tabController;
 
-  final List<Meal> meals = [
-    Meal(
-      title: 'Breakfast',
-      description: 'Scrambled eggs with tomatoes and spinach, whole wheat toast, and fresh fruit',
-      image: 'assets/images/breakfast.jpg',
-    ),
-    Meal(
-      title: 'Snack',
-      description: 'Almond butter and banana smoothie, Whole grain crackers with hummus',
-      image: 'assets/images/snacks.jpg',
-    ),
-    Meal(
-      title: 'Lunch',
-      description: 'Grilled chicken breast with quinoa and roasted vegetables',
-      image: 'assets/images/lunch.jpg',
-    ),
-    Meal(
-      title: 'Pre-Workout Meal',
-      description: 'Greek yogurt with mixed berries and honey, A whole-wheat tortilla with almond butter',
-      image: 'assets/images/pre_workoutmeals.jpg',
-    ),
-    Meal(
-      title: 'Post-Workout Meal',
-      description: 'Salmon fillet with sweet potato and green beans, Cottage cheese with sliced peaches',
-      image: 'assets/images/post_workoutmeals.jpg',
-    ),
-  ];
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 5, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Workout Meals'),
+        title: Text('Fitness Meals'),
+        bottom: TabBar(
+          controller: _tabController,
+          tabs: [
+            Tab(text: 'Pre-Workout'),
+            Tab(text: 'Post-Workout'),
+            Tab(text: 'Breakfast'),
+            Tab(text: 'Lunch'),
+            Tab(text: 'Dinner'),
+          ],
+        ),
       ),
-      body: ListView.builder(
-        itemCount: meals.length,
-        itemBuilder: (context, index) {
-          return Card(
-            child: Column(
-              children: [
-                Container(
-                  height: 200.0,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(meals[index].image),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        meals[index].title,
-                        style: Theme.of(context).textTheme.headline6,
-                      ),
-                      SizedBox(height: 8.0),
-                      Text(
-                        meals[index].description,
-                        style: Theme.of(context).textTheme.subtitle1,
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          );
-        },
+      body: TabBarView(
+        controller: _tabController,
+        children: [
+          _buildMealList('https://via.placeholder.com/150x150.png?text=Pre-Workout+Meal+1', 'Pre-Workout Meal 1'),
+          _buildMealList('https://via.placeholder.com/150x150.png?text=Post-Workout+Meal+1', 'Post-Workout Meal 1'),
+          _buildMealList('https://via.placeholder.com/150x150.png?text=Breakfast+Meal+1', 'Breakfast Meal 1'),
+          _buildMealList('https://via.placeholder.com/150x150.png?text=Lunch+Meal+1', 'Lunch Meal 1'),
+          _buildMealList('https://via.placeholder.com/150x150.png?text=Dinner+Meal+1', 'Dinner Meal 1'),
+        ],
       ),
+    );
+  }
+
+  Widget _buildMealList(String imageUrl, String title) {
+    return ListView(
+      children: [
+        ListTile(
+          leading: Image.network(imageUrl),
+          title: Text(title),
+          subtitle: Text('Meal Description'),
+          trailing: Icon(Icons.favorite_border),
+        ),
+        ListTile(
+          leading: Image.network(imageUrl),
+          title: Text(title),
+          subtitle: Text('Meal Description'),
+          trailing: Icon(Icons.favorite_border),
+        ),
+        ListTile(
+          leading: Image.network(imageUrl),
+          title: Text(title),
+          subtitle: Text('Meal Description'),
+          trailing: Icon(Icons.favorite_border),
+        ),
+      ],
     );
   }
 }

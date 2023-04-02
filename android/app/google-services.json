@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "760041914761",
+    "project_id": "cut-fit-app-9c566",
+    "storage_bucket": "cut-fit-app-9c566.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:760041914761:android:af8a339fcc9052e363a158",
+        "android_client_info": {
+          "package_name": "com.example.flutter_auth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "760041914761-f1mrcn1252tn2qg3ods5g6olra5khc3c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJ4gCVTsUda5EsLlYumDynLtDxn4viZMM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "760041914761-f1mrcn1252tn2qg3ods5g6olra5khc3c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -149,6 +149,3 @@ Widget _buildRecipeCard(BuildContext context, String title, String imagePath) {
   );
 }
 }
-
-
-
